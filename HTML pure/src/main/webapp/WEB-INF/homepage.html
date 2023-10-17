@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meetings agenda</title>
+</head>
+<body>
+        <h1>Meeting management</h1>
+        <div th:text="Welcome + ' ' + ${session.currentUser.name} + ' ' + ${session.currentUser.surname}"></div>
+        <div>
+            <a href="Logout">
+                <button class="ui-button" type="button">Logout</button>
+            </a>
+        </div>
+        <h2>My Meetings:</h2>
+        <table th:if="${not #lists.isEmpty(myMeetings)}">
+            <thead>
+            <tr>
+                <th>Meeting</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Max Participants</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="myMeeting : ${myMeetings}">
+                <td th:text="${myMeeting.title}"></td>
+                <td th:text="${myMeeting.date}"></td>
+                <td th:text="${myMeeting.time}"></td>
+                <td th:text="${myMeeting.length}"></td>
+                <td th:text="${myMeeting.numberOfParticipants}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p th:if="${#lists.isEmpty(myMeetings)}">You haven't created any meeting yet</p>
+
+        <h2>Others Meetings:</h2>
+        <table th:if="${not #lists.isEmpty(otherMeetings)}">
+            <thead>
+            <tr>
+                <th>Meeting</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Max Participants</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="otherMeeting : ${otherMeetings}">
+                <td th:text="${otherMeeting.title}"></td>
+                <td th:text="${otherMeeting.date}"></td>
+                <td th:text="${otherMeeting.time}"></td>
+                <td th:text="${otherMeeting.length}"></td>
+                <td th:text="${otherMeeting.numberOfParticipants}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p th:if="${#lists.isEmpty(otherMeetings)}">You haven't been invited to any meeting</p>
+
+        <div>
+            <h2>Create Meeting:</h2>
+            <form action="GoToUserList" method="post">
+                <fieldset>
+                    <p>
+                        Title: <label for="title">
+                        <input type="text" name="title" id="title" required />
+                    </label>
+                    </p>
+                    <p>
+                        Date: <label for="date">
+                        <input type="date" name="date"
+                                     th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                                     placeholder="yyyy-mm-dd" id="date" required />
+                    </label>
+                    </p>
+                    <p>
+                        Time: <label for="time">
+                        <input type="time" name="time" id="time" required />
+                    </label>
+                    </p>
+                    <p>
+                        Duration in minutes: <label for="duration">
+                        <input type="number" name="duration" id="duration" required min="0"/>
+                    </label>
+                    </p>
+                    <p>
+                        Maximum number of participants <label for="maxParticipantsNumber">
+                        <input type="number" name="maxParticipantsNumber" id="maxParticipantsNumber" required min="0"/>
+                    </label>
+                    </p>
+                    <input type="submit" name="submit">
+                    <div class="errorMessage"
+                        th:if="${errorMessage!=null}" th:text="${errorMessage}">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+</body>
+</html>

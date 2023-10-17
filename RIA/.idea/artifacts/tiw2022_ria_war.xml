@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tiw2022_ria:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>tiw2022_ria</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="tiw2022_ria-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="tiw2022_ria:war exploded" />
+    </root>
+  </artifact>
+</component>

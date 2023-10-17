@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registry</title>
+</head>
+<body>
+        <form action="CheckInvitations" method="post">
+            <fieldset th:if="${session.alreadySelectedUsers}!= null"
+                      th:each="user : ${session.alreadySelectedUsers}">
+                <input type="checkbox" name="selectedUsers" th:value="${user.username}" th:checked="true"/>
+                <label th:for="${user.username}" th:text="${user.username}"></label>
+            </fieldset>
+            <fieldset th:each="user : ${session.users}"
+                        th:if="${user.idUser} != ${session.currentUser.idUser}">
+                <input type="checkbox" name="selectedUsers" th:value="${user.username}" th:checked="false"/>
+                <label th:for="${user.username}" th:text="${user.username}" ></label>
+            </fieldset>
+            <input type="hidden" id="meeting" name="meeting" value="meeting" th:value="${session.meetingToCreate}">
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+        </form>
+
+        <div class="errorMessage"
+             th:if="${session.errorMessage!=null}" th:text="${session.errorMessage}">
+        </div>
+</body>
+</html>

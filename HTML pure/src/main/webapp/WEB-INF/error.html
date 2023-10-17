@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error page</title>
+</head>
+<body>
+
+        <div class="ui-state-error">
+
+          <div class="ui-state-error-text">An error occurred</div>
+          <div class="ui-state-error-text">
+            <b><span th:text="${error}"></span></b>
+          </div>
+          <div th:if="${session.currentUser == null}">
+            <hr>
+            <a href="GoToLoginPage">Go back to login page</a>
+          </div>
+        </div>
+</body>
+</html>

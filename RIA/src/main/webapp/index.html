@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts/utils.js" charset="utf-8" defer></script>
+    <script src="scripts/login.js" charset="utf-8" defer></script>
+    <title>Meeting Agenda Login</title>
+</head>
+<body>
+        <div>
+            <h1>Online Meeting Agenda</h1>
+            <div id="id_login_section">
+                <form action="#">
+                    <label for="email-input">Email</label>
+                    <input type="email"  placeholder="Enter your e-mail" name="email" id="email-input" required>
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Enter your password" name="password" id="password" required>
+                    <button id="id_login_button" type="submit">Login</button>
+                </form>
+                <div id="id_warning_login" style="display: none">
+                </div>
+                <hr>
+                <button id="open_register_button" onclick="showSignUp()">Sign Up</button>
+            </div>
+        </div>
+
+        <div id="id_signup_section">
+            <form id="id_register_form" action="#">
+                <label for="name">Name</label>
+                <input type="text" placeholder="Enter your name" name="name" id="name" required>
+                <label for="surname">Surname</label>
+                <input type="text" placeholder="Enter your surname" name="surname" id="surname" required>
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter your username" name="username" id="username" required>
+                <label for="email">E-mail</label>
+                <input type="email" placeholder="Enter your e-mail" name="email" id="email" required>
+                <label for="password_first">Password</label>
+                <input type="password" placeholder="Enter a password" name="password_first" id="password_first" required>
+                <label for="password_repeat">Repeat password</label>
+                <input type="password" placeholder="Repeat the password" name="password_repeat" id="password_repeat" required>
+                <button id="id_signup_button" type="submit">Register</button>
+            </form>
+            <div id="id_warning_signup" style="display: none">
+            </div>
+            <hr>
+            <button id="open_login_button" onclick="showLogin()">Return to login form</button>
+        </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Agenda Login</title>
+</head>
+<body>
+        <div class="type-parameters">
+            <h1>Online Meeting Agenda</h1>
+            <form action="CheckLogin" method="post">
+                <label for="email-input">Email</label>
+                <input type="email"  placeholder="Enter your e-mail" name="email" id="email-input" required>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter your password" name="password" id="password" required>
+                <button class="ui-button" type="submit">Login</button>
+            </form>
+            <div class="ui-state-error-text" th:if="${warning}">
+                <span th:text="${warning}"></span>
+            </div>
+            <hr>
+            <a href="GoToRegisterPage">
+                <button class="ui-button" type="button">Sign Up</button>
+            </a>
+        </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts/utils.js" charset="utf-8" defer></script>
+    <script src="scripts/home.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" type="text/css" media="all" href="css/modal.css"/>
+    <title>Meetings agenda</title>
+</head>
+<body>
+        <h1>Meeting management</h1>
+        <p>Welcome <span id="id_user"></span></p>
+        <div>
+            <a href="Logout">
+                <button type="button">Logout</button>
+            </a>
+        </div>
+
+        <div id="id_alert">
+            <h2>My Meetings:</h2>
+            <table id="id_my_meetings">
+                <thead>
+                <tr>
+                    <th>Meeting</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                    <th>Max Participants</th>
+                </tr>
+                </thead>
+                <tbody id="id_myListContainerBody">
+                </tbody>
+            </table>
+            <p id="id_alert_myMeetings"></p>
+
+            <h2>Others Meetings:</h2>
+            <table id="id_other_meetings">
+                <thead>
+                <tr>
+                    <th>Meeting</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                    <th>Max Participants</th>
+                </tr>
+                </thead>
+                <tbody id="id_otherListContainerBody">
+                </tbody>
+            </table>
+            <p id="id_alert_otherMeetings"></p>
+        </div>
+
+        <div>
+            <h2>Create Meeting:</h2>
+            <form id="id_createMeetingForm" action="#">
+                <fieldset>
+                    <p>
+                        Title: <label for="title">
+                        <input type="text" name="title" id="title" required />
+                    </label>
+                    </p>
+                    <p>
+                        Date: <label for="date">
+                        <input type="date" name="date" id="date" required />
+                    </label>
+                    </p>
+                    <p>
+                        Time: <label for="time">
+                        <input type="time" name="time" id="time" required />
+                    </label>
+                    </p>
+                    <p>
+                        Duration in minutes: <label for="duration">
+                        <input type="number" name="duration" id="duration" required min="1"/>
+                    </label>
+                    </p>
+                    <p>
+                        Maximum number of participants <label for="maxParticipantsNumber">
+                        <input type="number" name="maxParticipantsNumber" id="maxParticipantsNumber" required min="1"/>
+                    </label>
+                    </p>
+                    <input type="button" value="submit" name="submit" class="submit">
+                    <div id="errorMessage">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div id="id_chooseParticipants" class="modal hidden">
+                <button class="close">&times;</button>
+                <form action="#">
+                    <div id="id_invitation_list">
+                    </div>
+                    <p>
+                        <input type="button" value="Submit"/>
+                        <input type="reset" value="Reset"/>
+                    </p>
+                </form>
+
+            <div id="error-modal-message"  style="display: none">
+            </div>
+        </div>
+
+        <template id="id_invite_user">
+            <fieldset>
+                <div>
+                    <input class="selected_user" type="checkbox"/>
+                    <label>User Already Selected</label>
+                </div>
+            </fieldset>
+        </template>
+
+</body>
+</html>
